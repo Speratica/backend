@@ -9,7 +9,7 @@ find . -iname '*.png' -delete
 while read line;
     set base64_encoded (echo $line | base64)
     qrencode -v 4 -o (echo $line | cut -d, -f3-)-no-name.png -s 10 $base64_encoded
-    convert (echo $line | cut -d, -f3-)-no-name.png -font Roboto -pointsize 20\
+    convert (echo $line | cut -d, -f3-)-no-name.png -font Roboto -pointsize 27\
         label:(echo $line | cut -d, -f3- | sed s/,/\ /g) -gravity Center -append (echo $line | cut -d, -f3- | sed s/,/+/g)-name.png
     rm *-no-name.png
 end;
