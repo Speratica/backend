@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const csvtoqr = require('./lib/csvtoqr');
 const app = express();
 
-app.use(express.static('public'));
+app.use(express.static('../frontend'));
 app.use(bodyParser.json());
 
 app.use(function(req, res, next) {
