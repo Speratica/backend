@@ -58,7 +58,7 @@ for i in (seq 1 $left_elems)
     set offset (echo "$height*($i-1)*$percentage/100" | bc -l | cut -d. -f1)
     set ones (convert left.jpg -crop 100%x$percentage%+0+$offset +repage pbm:- | pnmtoplainpnm | tail -n 21 | tr -d '\n' | sed s/0//g | wc -c)
     # TODO: use a treshold relative to part width and height.
-    test "$ones" -gt 70; and echo "v$i yes"; or echo "v$i no"
+    test "$ones" -gt 60; and echo "v$i yes"; or echo "v$i no"
 end
 
 # Remove residue file
@@ -87,7 +87,7 @@ for i in (seq 1 $top_right_elems)
     set offset (echo "($i-1)*$cellheight" | bc)
     set ones (convert righttop.jpg -crop $rightwidth'x'$cellheight+0+$offset +repage pbm:- | pnmtoplainpnm | tail -n 21 | tr -d '\n' | sed s/0//g | wc -c)
     set pos (echo $i+$left_elems | bc)
-    test "$ones" -gt 70; and echo "v$pos yes"; or echo "v$pos no"
+    test "$ones" -gt 60; and echo "v$pos yes"; or echo "v$pos no"
 end
 
 # Remove residue file
@@ -96,7 +96,7 @@ rm righttop.jpg
 for i in (seq 1 $total_b)
     set offset (echo "($i-1)*$cellheight" | bc)
     set ones (convert rightbot.jpg -crop $rightwidth'x'$cellheight+0+$offset +repage pbm:- | pnmtoplainpnm | tail -n 21 | tr -d '\n' | sed s/0//g | wc -c)
-    test "$ones" -gt 70; and echo "b$i yes"; or echo "b$i no"
+    test "$ones" -gt 60; and echo "b$i yes"; or echo "b$i no"
 end
 
 # Remove residue files
