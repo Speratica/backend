@@ -42,7 +42,7 @@ mv scan_deskewed.jpg scan.jpg
 zbarimg -q scan.jpg | cut -d: -f2- | base64 -d | sed 's/+/,/g'
 
 # Extract the table part (discarding the QR and explanations part). Also resize to a predefined size to be able to use absolute offsets.
-convert scan.jpg -crop 60%x100%+0+0 +repage -fuzz 20% -trim +repage tables.jpg
+convert scan.jpg -crop 55%x100%+10+0 +repage -fuzz 20% -trim +repage tables.jpg
 
 # Extract left column
 # The left offset is at about 32% from the left border
